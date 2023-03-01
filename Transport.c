@@ -18,16 +18,20 @@ void transport(){
 	printf("\n");
 
 	//user's state extraction
+    
 	printf("In which state do you live?:");
 	char locationOfUser[20];
 	scanf("%s",&locationOfUser);
+
 	// if(strcmp("punjab",locationOfUser)==0){
 	// 	printf("same");
 	// }
 	// else{
 	// 	printf("none");
 	// }
-	//database:
+
+
+	//DATABASE:
 
 	gd pb={2100,1607.01,2031.47};
 	gd wb={400,470.69,556.68};
@@ -56,9 +60,9 @@ void transport(){
 	gd up={1100,932.26,1206.90};
 	gd uk={1100,1291.25,1729.47};
 	gd hp={1596,1551.33,2134.09};
-    // gd od={,};
     gd sikkim={,873.36,1139.14};
 
+gd locationState={pb,wb,assam,goa,mp,andhrap,arunachalp,bihar,chattisgarh,delhi,guj,haryana,jharkhand,karnataka,kerala,maharashtra,manipur,,meghalaya,mizoram,nagaland,rajasthan,tamilnadu,telangana,tripura,up,uk,hp,sikkim}
 
 
 
