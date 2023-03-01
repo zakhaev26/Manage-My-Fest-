@@ -1,0 +1,14 @@
+/////////////////////////////*TRAIN*/////////////////////////
+
+Base fare:
+
+AC First Class 3.53 rs/km
+AC Two tier, 2.08 rs/km
+First Class, 2.32 rs/km
+AC Three Tier, 1.46/km
+AC Chair Car,1.40rs/km
+Sleeper Class,0.62rs/km
+
+
+Registration and proccessing fee:60rs
+GST:5%

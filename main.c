@@ -22,10 +22,9 @@ void transport()
 
     printf("In which state do you live?:");
     char stateOfUser[20];
-    scanf("%s",stateOfUser);
-//why if using fgets the code fails but when using SCANF, the code works.
-    // DATABASE:
-
+    scanf("%s", stateOfUser);
+    // why if using fgets the code fails but when using SCANF, the code works.
+    //  DATABASE:
 
     gd pb = {"punjab", 2100, 1607.01, 2031.47};
     gd wb = {"west bengal", 400, 470.69, 556.68};
@@ -86,27 +85,67 @@ void transport()
 
     float extra_kilometers;
     int userchoice;
-
+    float *traindistpointer, *flightdistpointer, *busdistpointer;
     for (int i = 0; i < 28; i++)
     {
         if (strcmp(locationState[i].state, stateOfUser) == 0)
         {
             printf("How far are you from the main capital of %s?\n", locationState[i].state);
-            scanf("%f",&extra_kilometers);
+            scanf("%f", &extra_kilometers);
             // printf("Great,so you are currently %.2fkms far from IIIT-Bhubaneswar.",extra_kilometers+locationState[i].distanceByBus);
             printf("Which mode of travel you want to have?\n1)By Train\n2)By Bus\n3)By Flight");
-            scanf("%d",&userchoice);
+            scanf("%d", &userchoice);
+            *(traindistpointer) = locationState[i].distanceByTrain + extra_kilometers;
+            *(flightdistpointer) = locationState[i].distanceByFlight + extra_kilometers;
+            *(busdistpointer) = locationState[i].distanceByBus + extra_kilometers;
         }
     }
+    float distanceOfuser_BYTRAIN;
+    float distanceOfuser_BYFLIGHT;
+    float distanceOfuser_BYBUS;
 
-    if(userchoice==1){
-        // printf("train");
-        printf("Pricing Plan:\n")
+    int trainChoice;
+    int total_cost = 0;
+
+    float ac1c = 3.53;
+    float ac2t = 2.08;
+    float fc = 2.32;
+    float ac3t = 1.46;
+    float acc = 1.40;
+    float sc = 0.62;
+
+    // TRAIN---->
+    if (userchoice == 1)
+    {
+        printf("Train Pricing Plan:\n*Base Price*\n1)AC First Class:Rs 3.53/Km\n2)AC Two Tier:Rs 2.08/Km\n3)First Class:Rs 2.32/Km\n4)AC 3-Tier:Rs 1.46/Km\n5)AC Chair Car:Rs 1.40/Km\n6)Sleeper Class:Rs 0.62/Km\n\n*Registration and Processing Fee:Rs 60*\nGST:5 percent.");
+        scanf("%d", &trainChoice);
+        if (trainChoice == 1)
+        {
+            total_cost = total_cost + ac1c *
+        }
+        else if (trainChoice == 2)
+        {
+        }
+        else if (trainChoice == 2)
+        {
+        }
+        else if (trainChoice == 2)
+        {
+        }
+        else if (trainChoice == 2)
+        {
+        }
+        else if (trainChoice == 2)
+        {
+        }
+        total_cost = total_cost + 60 +
     }
-    else if(userchoice==2){
+    else if (userchoice == 2)
+    {
         // printf("bus");
     }
-    else{
+    else
+    {
         // printf("flight");
     }
 }
