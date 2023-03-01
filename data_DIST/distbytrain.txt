@@ -1,0 +1,25 @@
+Andhra Pradesh	Odisha	750
+Arunachal Pradesh	Odisha	2,600
+Assam	Odisha	1,000
+Bihar	Odisha	700
+Chhattisgarh	Odisha	500
+Delhi	Odisha	1,800
+Gujarat	Odisha	1,600
+Haryana	Odisha	1,900
+Jharkhand	Odisha	300
+Karnataka	Odisha	1,500
+Kerala	Odisha	2,300
+Madhya Pradesh	Odisha	1,000
+Maharashtra	Odisha	1,400
+Manipur	Odisha	2,400
+Meghalaya	Odisha	1,800
+Mizoram	Odisha	2,400
+Nagaland	Odisha	2,400
+Punjab	Odisha	2,100
+Rajasthan	Odisha	1,700
+Tamil Nadu	Odisha	1,700
+Telangana	Odisha	1,000
+Tripura	Odisha	2,200
+Uttar Pradesh	Odisha	1,100
+Uttarakhand	Odisha	1,800
+West Bengal	Odisha	400
