@@ -22,7 +22,7 @@ void transport()
 
     printf("In which state do you live?:");
     char stateOfUser[20];
-    scanf("%s", stateOfUser);
+    scanf(" %s", stateOfUser);
     // why if using fgets the code fails but when using SCANF, the code works.
     //  DATABASE:
 
@@ -93,19 +93,21 @@ void transport()
             printf("How far are you from the main capital of %s?\n", locationState[i].state);
             scanf("%f", &extra_kilometers);
             // printf("Great,so you are currently %.2fkms far from IIIT-Bhubaneswar.",extra_kilometers+locationState[i].distanceByBus);
-            printf("Which mode of travel you want to have?\n1)By Train\n2)By Bus\n3)By Flight");
+            printf("Which mode of travel you want to have?\n1)By Train\n2)By Bus\n3)By Flight\n");
             scanf("%d", &userchoice);
-            *(traindistpointer) = locationState[i].distanceByTrain + extra_kilometers;
-            *(flightdistpointer) = locationState[i].distanceByFlight + extra_kilometers;
-            *(busdistpointer) = locationState[i].distanceByBus + extra_kilometers;
+            float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
+            float userdistbyflight = locationState[i].distanceByFlight + extra_kilometers;
+            float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
+            (traindistpointer) = &(userdistbytrain);
+            (flightdistpointer) = &(userdistbyflight);
+            (busdistpointer) = &(userdistbybus);
         }
     }
-    float distanceOfuser_BYTRAIN;
-    float distanceOfuser_BYFLIGHT;
-    float distanceOfuser_BYBUS;
 
+    float distanceOfuser_BYTRAIN = *traindistpointer;
+    float distanceOfuser_BYFLIGHT = *flightdistpointer;
+    float distanceOfuser_BYBUS = *busdistpointer;
     int trainChoice;
-    int total_cost = 0;
 
     float ac1c = 3.53;
     float ac2t = 2.08;
@@ -113,7 +115,7 @@ void transport()
     float ac3t = 1.46;
     float acc = 1.40;
     float sc = 0.62;
-
+float cost;
     // TRAIN---->
     if (userchoice == 1)
     {
@@ -121,25 +123,34 @@ void transport()
         scanf("%d", &trainChoice);
         if (trainChoice == 1)
         {
-            total_cost = total_cost + ac1c *
+             cost = ac1c * distanceOfuser_BYTRAIN;
         }
         else if (trainChoice == 2)
         {
+             cost = ac2t * distanceOfuser_BYTRAIN;
         }
-        else if (trainChoice == 2)
+        else if (trainChoice == 3)
         {
+             cost = fc * distanceOfuser_BYTRAIN;
         }
-        else if (trainChoice == 2)
+        else if (trainChoice == 4)
         {
+             cost = ac3t * distanceOfuser_BYTRAIN;
         }
-        else if (trainChoice == 2)
+        else if (trainChoice == 5)
         {
+             cost = acc * distanceOfuser_BYTRAIN;
         }
-        else if (trainChoice == 2)
+        else if (trainChoice == 6)
         {
+             cost = sc * distanceOfuser_BYTRAIN;
         }
-        total_cost = total_cost + 60 +
+
+        float gst = (cost* 5.00)/100;
+        float  total_cost = cost + gst + 60.0;
+        printf("%f", total_cost);
     }
+
     else if (userchoice == 2)
     {
         // printf("bus");
