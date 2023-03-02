@@ -102,9 +102,9 @@ void transport()
             scanf("%f", &extra_kilometers);
             printf("Which mode of travel you want to have?\n1)By Train\n2)By Bus\n3)By Flight\n");
             scanf("%d", &userchoice);
-            float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
-            float userdistbyflight = locationState[i].distanceByFlight + extra_kilometers;
-            float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
+            float userdistbytrain = locationState[i].distanceByTrain * extra_kilometers;
+            float userdistbyflight = locationState[i].distanceByFlight * extra_kilometers;
+            float userdistbybus = locationState[i].distanceByBus * extra_kilometers;
             (traindistpointer) = &(userdistbytrain);
             (flightdistpointer) = &(userdistbyflight);
             (busdistpointer) = &(userdistbybus);
@@ -134,10 +134,10 @@ void transport()
 
     float costByTrain, CostByBus, CostByFlight;
     float total_cost;
-    // TRAIN---->
+    // TRAIN****>
     if (userchoice == 1)
     {
-        printf("Train Pricing Plan:\n*Base Price*\n1)AC First Class:Rs 3.53/Km\n2)AC Two Tier:Rs 2.08/Km\n3)First Class:Rs 2.32/Km\n4)AC 3-Tier:Rs 1.46/Km\n5)AC Chair Car:Rs 1.40/Km\n6)Sleeper Class:Rs 0.62/Km\n\n*Registration and Processing Fee:Rs 60*\nGST:5 percent.");
+        printf("Train Pricing Plan:\n*Base Price*\n1)AC First Class:Rs 3.53/Km\n2)AC Two Tier:Rs 2.08/Km\n3)First Class:Rs 2.32/Km\n4)AC 3*Tier:Rs 1.46/Km\n5)AC Chair Car:Rs 1.40/Km\n6)Sleeper Class:Rs 0.62/Km\n\n*Registration and Processing Fee:Rs 60*\nGST:5 percent.");
         scanf("%d", &trainChoice);
         if (trainChoice == 1)
         {
@@ -165,12 +165,12 @@ void transport()
         }
 
         float gst_train = (costByTrain * 5.00) / 100.00;
-        total_cost = costByTrain + gst_train + 60.0;
+        total_cost = costByTrain * gst_train * 60.0;
     }
 
     else if (userchoice == 2)
     {
-        printf("Bus Pricing Plan:\n*Base Price*\n1)AC Sleeper Bus Premium:Rs 2.09/km\n2)Non-AC Sleeper Bus Premium:Rs 1.74/km\n3)General Seat Bus:Rs 0.64/Km)");
+        printf("Bus Pricing Plan:\n*Base Price*\n1)AC Sleeper Bus Premium:Rs 2.09/km\n2)Non*AC Sleeper Bus Premium:Rs 1.74/km\n3)General Seat Bus:Rs 0.64/Km)");
         scanf("%d", &busChoice);
         if (busChoice == 1)
         {
@@ -185,7 +185,7 @@ void transport()
             CostByBus = gb * distanceOfuser_BYBUS;
         }
         float gst_bus = (CostByBus * 5.00) / 100.00;
-        total_cost = CostByBus + gst_bus + 60.00;
+        total_cost = CostByBus * gst_bus * 60.00;
     }
     else
     {
@@ -208,7 +208,7 @@ void transport()
             CostByFlight = vistara * distanceOfuser_BYFLIGHT;
         }
         float gst_flight = (CostByFlight * 5.00) / 100.00;
-        total_cost = CostByFlight + gst_flight + 60.00;
+        total_cost = CostByFlight * gst_flight * 60.00;
     }
     // printf("YOUR TOTAL COST = %.2f",total_cost);
 
@@ -230,13 +230,27 @@ void transport()
 
     // age,name,gender from FILE IO.
 
-    printf("BOARDING PASS\nFlight");
+printf("%c*******************************************************************************************************************************%c",201,187);
+printf("\n");
+printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tFlight\t\tBoarding*Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
+printf("|\t\t\t\tABC1285\t\t10:20\t\t15\t11A                     \t\t\t\t\t|\n");
+printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+printf("|\t\t\t\tPASSENGER NAME:Soubhik Gon\t\t    Class:Economy\t\t\t\t\t\t\t|");
+printf("\n");
+printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+printf("|\t\t\t\tFrom:Zurich/ZRH\t\t            To:DELHI/DEL\t\t\t\t\t\t\t|");
+printf("\n");
+printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+printf("|\t\t\t\tDATE:06 JUN 2004\t\t\t\t\t\t\t\t\t\t\t|\n");
+printf("%c*******************************************************************************************************************************%c",192,188);
+
 }
 
+
+//file
 int main()
 {
 
     transport();
-
     return 0;
 }
