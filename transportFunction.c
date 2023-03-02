@@ -166,7 +166,6 @@ void transport()
 
         float gst_train = (costByTrain * 5.00) / 100.00;
         total_cost = costByTrain + gst_train + 60.0;
-        printf("%f", total_cost);
     }
 
     else if (userchoice == 2)
@@ -187,7 +186,6 @@ void transport()
         }
         float gst_bus = (CostByBus * 5.00) / 100.00;
         total_cost = CostByBus + gst_bus + 60.00;
-        printf("%f", total_cost);
     }
     else
     {
@@ -211,8 +209,28 @@ void transport()
         }
         float gst_flight = (CostByFlight * 5.00) / 100.00;
         total_cost = CostByFlight + gst_flight + 60.00;
-        printf("%f", total_cost);
     }
+    // printf("YOUR TOTAL COST = %.2f",total_cost);
+
+    int hour;
+    int min;
+    int day;
+    int month = 3;
+    int year = 2023;
+
+    printf("Please select the time for departure[12 HOUR FORMAT]:\n");
+    printf("Hour:\n");
+    scanf("%d", &hour);
+
+    printf("Minute:\n");
+    scanf("%d", &min);
+
+    printf("Day:\n");
+    scanf("%d", &day);
+
+    // age,name,gender from FILE IO.
+
+    printf("BOARDING PASS\nFlight");
 }
 
 int main()
