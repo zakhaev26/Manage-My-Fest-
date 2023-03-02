@@ -12,3 +12,29 @@ Sleeper Class,0.62rs/km
 
 Registration and proccessing fee:60rs
 GST:5%
+
+
+////////////////////////////*BUS*//////////////////////////
+
+Base fare:
+
+1)AC Sleeper:2.09/km
+2)Non AC Sleeper:1.74/km
+3)General Bus:0.64/km
+
+
+Registration and proccessing fee:60rs
+GST:5%
+
+
+///////////////////////////*Flight Ticket///////////////////
+
+Base Fare:
+
+1)Indigo:Rs 5.02/Km
+2)Jet Airways:Rs 3.89/km
+3)Vistara :Rs 4.23/Km
+4)Air India :Rs 3.02/Km
+
+Registration and proccessing fee:100rs
+GST:5%
