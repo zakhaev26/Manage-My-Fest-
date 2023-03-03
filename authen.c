@@ -24,7 +24,7 @@ void authendesign(void)
 
 char generateusername(char email[50], char username[50])
 {
-    // abc123@gmail.com
+
     for (int i = 0; i < strlen(email); i++)
     {
         if (email[i] == '@')
@@ -67,7 +67,7 @@ struct user
     char password[40];
     char username[40];
     char email[40];
-    char phone[40];
+    int phone[10];
 };
 void regis()
 {
