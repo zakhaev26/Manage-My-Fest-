@@ -22,8 +22,9 @@ void authendesign(void)
     printf("----------------------------------------------------------------------------------------\n");
 }
 
-char generateusername(char username[40], char email[40])
+char generateusername(char email[50], char username[50])
 {
+
     for (int i = 0; i < strlen(email); i++)
     {
         if (email[i] == '@')
@@ -66,7 +67,7 @@ struct user
     char password[40];
     char username[40];
     char email[40];
-    char phone[40];
+    int phone[10];
 };
 void regis()
 {
@@ -87,8 +88,8 @@ void regis()
 
     if (!strcmp(user.password, password2))
     {
-        generateusername(user.username, user.email);
-        f = fopen("Users.txt", "w");
+        generateusername(user.email, user.username);
+        f = fopen("Users.dat", "a+");
         fwrite(&user, sizeof(struct user), 1, f);
         if (fwrite != 0)
             printf("\n\nUser resgistration success, Your username is %s", user.username);
@@ -114,22 +115,26 @@ void login()
     printf("Enter your password:\t");
     takepassword(pword);
 
-    fp = fopen("Users.txt", "r");
+    fp = fopen("Users.dat", "r");
     while (fread(&usr, sizeof(struct user), 1, fp))
     {
-        if (strcmp(usr.username, uname) == 0 && strcmp(usr.password, pword))
+        if (!strcmp(usr.username, uname))
         {
-
-            printf("\n\t\t\t\t\t\tWelcome %s", usr.name);
-            printf("\n|Username:\t%s", usr.username);
-        }
-        else
+            if (!strcmp(usr.password, pword))
             {
-                printf("\n\nInvalid Password!");
+                
+                printf("\nWelcome %s", usr.username);
+                
             }
-            count = 1;
         }
-    
+
+        else
+        {
+            printf("\n\nInvalid Password!");
+        }
+        count = 1;
+    }
+
     if (!count)
     {
         printf("\n\nUser is not registered!");
@@ -139,9 +144,7 @@ void login()
 int main()
 {
     authendesign();
-    // FILE MANAGEMENT
-    FILE *fp;
-    // login& signup
+    
     int opt, count = 0;
 
     printf("\nPlease Choose Your Operation:-");
@@ -152,11 +155,13 @@ int main()
     printf("\n\nEnter Your Choice:-");
     scanf("%d", &opt); // scanf will include"\n"
     fgetc(stdin);
-    if(opt ==1){
+    if (opt == 1)
+    {
         regis();
         exit(0);
     }
-    else if(opt ==2){
+    else if (opt == 2)
+    {
         login();
         exit(0);
     }
