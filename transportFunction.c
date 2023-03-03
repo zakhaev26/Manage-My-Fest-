@@ -4,10 +4,12 @@
 
 //**********Structure for defining states and their distances from College.**********
 
+
 typedef struct geographical_DISTANCE
 {
 
     char state[20];
+    // char stateCode[5];
     float distanceByTrain;
     float distanceByFlight;
     float distanceByBus;
@@ -18,6 +20,7 @@ void transport()
 {
 
     //*****************************Greeting Message*******************.
+
     printf("Welcome to transport facility!");
     printf("\n");
 
@@ -26,7 +29,8 @@ void transport()
     printf("In which state do you live?:");
     char stateOfUser[20];
     scanf(" %s", stateOfUser);
-    // why if using fgets the code fails but when using SCANF, the code works.
+    
+    //---> why if using fgets the code fails but when using SCANF, the code works.
 
     //**********************DATABASE********************************
 
@@ -60,33 +64,7 @@ void transport()
     // gd sikkim = {, 873.36, 1139.14};
 
     //*************************GEOGRAPHICAL_DIST ARRAY INIT*******************
-    gd locationState[28] = {pb,
-                            wb,
-                            assam,
-                            goa,
-                            mp,
-                            andhrap,
-                            arunachalp,
-                            bihar,
-                            chattisgarh,
-                            delhi,
-                            guj,
-                            haryana,
-                            jharkhand,
-                            karnataka,
-                            kerala,
-                            maharashtra,
-                            manipur,
-                            meghalaya,
-                            mizoram,
-                            nagaland,
-                            rajasthan,
-                            tamilnadu,
-                            telangana,
-                            tripura,
-                            up,
-                            uk,
-                            hp};
+    gd locationState[28] = {pb,wb,assam,goa,mp,andhrap,arunachalp,bihar,chattisgarh,delhi,guj,haryana,jharkhand,karnataka,kerala,maharashtra,manipur,meghalaya,mizoram,nagaland,rajasthan,tamilnadu,telangana,tripura,up,uk,hp};
 
     float extra_kilometers;
     int userchoice;
@@ -98,23 +76,28 @@ void transport()
         if (strcmp(locationState[i].state, stateOfUser) == 0)
         {
 
-            printf("How far are you from the main capital of %s?\n", locationState[i].state);
+            printf("How far are you from the main capital of %s?:\n", locationState[i].state);
             scanf("%f", &extra_kilometers);
-            printf("Which mode of travel you want to have?\n1)By Train\n2)By Bus\n3)By Flight\n");
+            printf("Which mode of travel you want to have?:\n1)By Train\n2)By Bus\n3)By Flight\n");
             scanf("%d", &userchoice);
-            float userdistbytrain = locationState[i].distanceByTrain * extra_kilometers;
-            float userdistbyflight = locationState[i].distanceByFlight * extra_kilometers;
-            float userdistbybus = locationState[i].distanceByBus * extra_kilometers;
+
+            //*********************Distance Logic using Pointers.***************************|
+            float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
+            float userdistbyflight = locationState[i].distanceByFlight +extra_kilometers;
+            float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
             (traindistpointer) = &(userdistbytrain);
             (flightdistpointer) = &(userdistbyflight);
             (busdistpointer) = &(userdistbybus);
         }
     }
-
+    
     float distanceOfuser_BYTRAIN = *traindistpointer;
     float distanceOfuser_BYFLIGHT = *flightdistpointer;
     float distanceOfuser_BYBUS = *busdistpointer;
     int trainChoice, flightChoice, busChoice;
+    printf("The distance between your current location and IIIT-BBS through Train Route is %.2f \n",distanceOfuser_BYTRAIN);
+    printf("The distance between your current location and IIIT-BBS through Flight Route is %.2f \n",distanceOfuser_BYFLIGHT);
+    printf("The distance between your current location and IIIT-BBS through Bus Route is %.2f \n",distanceOfuser_BYBUS);
 
     float ac1c = 3.53;
     float ac2t = 2.08;
@@ -122,16 +105,13 @@ void transport()
     float ac3t = 1.46;
     float acc = 1.40;
     float sc = 0.62;
-
     float acs = 2.09;
     float nas = 1.74;
     float gb = 0.64;
-
     float indigo = 5.02;
     float jetairways = 3.89;
     float vistara = 4.23;
     float airindia = 3.02;
-
     float costByTrain, CostByBus, CostByFlight;
     float total_cost;
     // TRAIN****>
@@ -165,7 +145,7 @@ void transport()
         }
 
         float gst_train = (costByTrain * 5.00) / 100.00;
-        total_cost = costByTrain * gst_train * 60.0;
+        total_cost = costByTrain + gst_train + 60.0;
     }
 
     else if (userchoice == 2)
@@ -185,7 +165,7 @@ void transport()
             CostByBus = gb * distanceOfuser_BYBUS;
         }
         float gst_bus = (CostByBus * 5.00) / 100.00;
-        total_cost = CostByBus * gst_bus * 60.00;
+        total_cost = CostByBus + gst_bus + 60.00;
     }
     else
     {
@@ -193,7 +173,7 @@ void transport()
         scanf("%d", &flightChoice);
         if (flightChoice == 1)
         {
-            CostByFlight = indigo * distanceOfuser_BYFLIGHT;
+            CostByFlight = indigo * distanceOfuser_BYFLIGHT;   
         }
         else if (flightChoice == 2)
         {
@@ -208,9 +188,11 @@ void transport()
             CostByFlight = vistara * distanceOfuser_BYFLIGHT;
         }
         float gst_flight = (CostByFlight * 5.00) / 100.00;
-        total_cost = CostByFlight * gst_flight * 60.00;
+        total_cost = CostByFlight + gst_flight + 60.00;
     }
-    // printf("YOUR TOTAL COST = %.2f",total_cost);
+
+
+    printf("Your Total Cost of journey is  %f\n",total_cost);
 
     int hour;
     int min;
@@ -232,16 +214,16 @@ void transport()
 
 printf("%c*******************************************************************************************************************************%c",201,187);
 printf("\n");
-printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tFlight\t\tBoarding*Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
-printf("|\t\t\t\tABC1285\t\t10:20\t\t15\t11A                     \t\t\t\t\t|\n");
+printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tFlight\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
+printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n",hour,min);
 printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-printf("|\t\t\t\tPASSENGER NAME:Soubhik Gon\t\t    Class:Economy\t\t\t\t\t\t\t|");
+printf("|\t\t\t\tPASSENGER NAME:FILE IO\t\t    Class:Economy\t\t\t\t\t\t\t|");
 printf("\n");
 printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-printf("|\t\t\t\tFrom:Zurich/ZRH\t\t            To:DELHI/DEL\t\t\t\t\t\t\t|");
+printf("|\t\t\t\tFrom:%s\t\t    To:Bhubaneswar/BBS\t\t\t\t\t\t\t|",stateOfUser);
 printf("\n");
 printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-printf("|\t\t\t\tDATE:06 JUN 2004\t\t\t\t\t\t\t\t\t\t\t|\n");
+printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n",day);
 printf("%c*******************************************************************************************************************************%c",192,188);
 
 }
