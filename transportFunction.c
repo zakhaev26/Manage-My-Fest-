@@ -2,8 +2,7 @@
 #include <string.h>
 #include <ctype.h>
 
-//**********Structure for defining states and their distances from College.**********
-
+//**********STRUCTURE TO SET STATES AND THEIR DISTANCES FROM COLLEGE**********
 typedef struct geographical_DISTANCE
 {
     char state[20];
@@ -13,16 +12,16 @@ typedef struct geographical_DISTANCE
     float distanceByBus;
 } gd;
 
-//*************Function Call**********************************
+//*************FUNCTION CALL**********************************
 void transport()
 {
 
-    //*****************************Greeting Message*******************.
+    //*****************************GREETING MESSAGE*******************
 
     printf("Welcome to transport facility!");
     printf("\n");
 
-    //************************User state extraction****************************
+    //************************USER STATE EXTRACTION****************************
     char stateOfUser[20];
     printf("In which state do you live?:");
     fgets(stateOfUser, 100, stdin);
@@ -60,19 +59,18 @@ void transport()
     gd up = {"uttar pradesh", 1100, 932.26, 1206.90};
     gd uk = {"uttarakhand", 1100, 1291.25, 1729.47};
     gd hp = {"himachal pradesh", 1596, 1551.33, 2134.09};
-    // gd sikkim = {, 873.36, 1139.14};
+    //more states to be added.
 
     //*************************GEOGRAPHICAL_DIST ARRAY INIT*******************
     gd locationState[28] = {pb, wb, assam, goa, mp, andhrap, arunachalp, bihar, chattisgarh, delhi, guj, haryana, jharkhand, karnataka, kerala, maharashtra, manipur, meghalaya, mizoram, nagaland, rajasthan, tamilnadu, telangana, tripura, up, uk, hp};
-    printf("%d", strcmp(locationState[1].state, stateOfUser));
     float extra_kilometers;
     int userchoice;
     float *traindistpointer, *flightdistpointer, *busdistpointer;
 
-    //**********************Iterating through locationState to find stateOfUser and tap into hte data.
+    //**********************ITERATING THROUGH THE locationState[].state to tap into its details**********************
     for (int i = 0; i < 28; i++)
     {
-        if (!strcmp(locationState[i].state, stateOfUser))
+        if (strcmp(locationState[i].state, stateOfUser)==0)
         {
 
             printf("How far are you from the main capital of %s?:\n", locationState[i].state);
@@ -80,7 +78,8 @@ void transport()
             printf("Which mode of travel you want to have?:\n1)By Train\n2)By Bus\n3)By Flight\n");
             scanf("%d", &userchoice);
 
-            //*********************Distance Logic using Pointers.***************************|
+            //*********************DISTANCE LOGIC USING POINTERS.***************************|
+            //NOTE:USED POINTERS TO TAKE THE DATA OUT OF LOCAL SCOPE.
             float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
             float userdistbyflight = locationState[i].distanceByFlight + extra_kilometers;
             float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
@@ -89,15 +88,17 @@ void transport()
             (busdistpointer) = &(userdistbybus);
         }
     }
-
+//*********************ASSIGNING VALUES TO SIMPLER VAR**********************
     float distanceOfuser_BYTRAIN = *traindistpointer;
     float distanceOfuser_BYFLIGHT = *flightdistpointer;
     float distanceOfuser_BYBUS = *busdistpointer;
     int trainChoice, flightChoice, busChoice;
+
     printf("The distance between your current location and IIIT-BBS through Train Route is %.2f \n", distanceOfuser_BYTRAIN);
     printf("The distance between your current location and IIIT-BBS through Flight Route is %.2f \n", distanceOfuser_BYFLIGHT);
     printf("The distance between your current location and IIIT-BBS through Bus Route is %.2f \n", distanceOfuser_BYBUS);
 
+//****************************PRICING PLAN:*********************
     float ac1c = 3.53;
     float ac2t = 2.08;
     float fc = 2.32;
@@ -114,7 +115,7 @@ void transport()
     float costByTrain, CostByBus, CostByFlight;
     float total_cost;
 
-    //*********************Pricing plan for Train******************
+    //*********************COST CALCULATION FOR TRAIN ROUTE******************
 
     if (userchoice == 1)
     {
@@ -149,7 +150,7 @@ void transport()
         total_cost = costByTrain + gst_train + 60.0;
     }
 
-    //****************************************pricing plan for Bus*****************************
+    //****************************************COST CALCULATION THROUGH BUS ROUTE*****************************
     else if (userchoice == 2)
     {
         printf("Bus Pricing Plan:\n*Base Price*\n1)AC Sleeper Bus Premium:Rs 2.09/km\n2)Non*AC Sleeper Bus Premium:Rs 1.74/km\n3)General Seat Bus:Rs 0.64/Km)");
@@ -170,7 +171,7 @@ void transport()
         total_cost = CostByBus + gst_bus + 60.00;
     }
 
-    //**************************pricing plan for flight*****************
+    //**************************COST CALCULATION THROUGH FLIGHT ROUTE*****************
 
     else
     {
@@ -216,6 +217,41 @@ void transport()
 
     // age,name,gender from FILE IO.
 
+//train,bus,flight
+    if(userchoice==1{
+    printf("%c*******************************************************************************************************************************%c", 201, 187);
+    printf("\n");
+    printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tTRAIN\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
+    printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n", hour, min);
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tPASSENGER NAME:FILE IO\t\t    Class:Economy\t\t\t\t\t\t\t|");
+    printf("\n");
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tFrom:%s\t\t    To:Bhubaneswar/BBS\t\t\t\t\t\t\t|", stateOfUser);
+    printf("\n");
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n", day);
+    printf("%c*******************************************************************************************************************************%c", 192, 188);
+    })
+
+else if(userchoice=2){
+
+
+    printf("%c*******************************************************************************************************************************%c", 201, 187);
+    printf("\n");
+    printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tBus\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
+    printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n", hour, min);
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tPASSENGER NAME:FILE IO\t\t    Class:Economy\t\t\t\t\t\t\t|");
+    printf("\n");
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tFrom:%s\t\t    To:Bhubaneswar/BBS\t\t\t\t\t\t\t|", stateOfUser);
+    printf("\n");
+    printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
+    printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n", day);
+    printf("%c*******************************************************************************************************************************%c", 192, 188);
+}
+else if(userchoice==3){
     printf("%c*******************************************************************************************************************************%c", 201, 187);
     printf("\n");
     printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tFlight\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
@@ -229,6 +265,7 @@ void transport()
     printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
     printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n", day);
     printf("%c*******************************************************************************************************************************%c", 192, 188);
+}
 }
 
 // file
