@@ -12,6 +12,8 @@ typedef struct geographical_DISTANCE
     float distanceByBus;
 } gd;
 
+
+
 //*************FUNCTION CALL**********************************
 void transport()
 {
@@ -28,7 +30,6 @@ void transport()
 
     stateOfUser[strcspn(stateOfUser, "\n")] = '\0';
     strcpy(stateOfUser,strlwr(stateOfUser));
-    //---> why if using fgets the code fails but when using SCANF, the code works.
 
     //**********************DATABASE********************************
 
@@ -68,26 +69,30 @@ void transport()
     float *traindistpointer, *flightdistpointer, *busdistpointer;
 
     //**********************ITERATING THROUGH THE locationState[].state to tap into its details**********************
-    for (int i = 0; i < 28; i++)
-    {
-        if (strcmp(locationState[i].state, stateOfUser)==0)
+
+        again:
+       
+        for (int i = 0; i < 28; i++) 
         {
+            
+            if (strcmp(locationState[i].state, stateOfUser)==0)
+            {
 
-            printf("How far are you from the main capital of %s?:\n", locationState[i].state);
-            scanf("%f", &extra_kilometers);
-            printf("Which mode of travel you want to have?:\n1)By Train\n2)By Bus\n3)By Flight\n");
-            scanf("%d", &userchoice);
+                printf("How far are you from the main capital of %s?:\n", locationState[i].state);
+                scanf("%f", &extra_kilometers);
+                printf("Which mode of travel you want to have?:\n1)By Train\n2)By Bus\n3)By Flight\n");
+                scanf("%d", &userchoice);
 
-            //*********************DISTANCE LOGIC USING POINTERS.***************************|
-            //NOTE:USED POINTERS TO TAKE THE DATA OUT OF LOCAL SCOPE.
-            float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
-            float userdistbyflight = locationState[i].distanceByFlight + extra_kilometers;
-            float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
-            (traindistpointer) = &(userdistbytrain);
-            (flightdistpointer) = &(userdistbyflight);
-            (busdistpointer) = &(userdistbybus);
+                //*********************DISTANCE LOGIC USING POINTERS.***************************|
+                //NOTE:USED POINTERS TO TAKE THE DATA OUT OF LOCAL SCOPE.
+                float userdistbytrain = locationState[i].distanceByTrain + extra_kilometers;
+                float userdistbyflight = locationState[i].distanceByFlight + extra_kilometers;
+                float userdistbybus = locationState[i].distanceByBus + extra_kilometers;
+                (traindistpointer) = &(userdistbytrain);
+                (flightdistpointer) = &(userdistbyflight);
+                (busdistpointer) = &(userdistbybus);
+            }
         }
-    }
 //*********************ASSIGNING VALUES TO SIMPLER VAR**********************
     float distanceOfuser_BYTRAIN = *traindistpointer;
     float distanceOfuser_BYFLIGHT = *flightdistpointer;
@@ -218,7 +223,7 @@ void transport()
     // age,name,gender from FILE IO.
 
 //train,bus,flight
-    if(userchoice==1{
+    if(userchoice==1){
     printf("%c*******************************************************************************************************************************%c", 201, 187);
     printf("\n");
     printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tTRAIN\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
@@ -232,7 +237,7 @@ void transport()
     printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
     printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n", day);
     printf("%c*******************************************************************************************************************************%c", 192, 188);
-    })
+    }
 
 else if(userchoice=2){
 
