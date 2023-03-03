@@ -6,7 +6,11 @@
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
-
+char Transport(char flag) {
+    printf("Are you done with your transport\"Y'\\'N\" :  ");
+    scanf("%c",flag);
+    return flag;
+}
 void takeinput(char ch[40])
 {
     fgets(ch, 40, stdin);
@@ -22,17 +26,26 @@ void authendesign(void)
     printf("----------------------------------------------------------------------------------------\n");
 }
 
-char generateusername(char email[50], char username[50])
+char generateusername(char name[40], char username[40])
 {
-
-    for (int i = 0; i < strlen(email); i++)
+    int ascii;
+    for (int i = 0; i < strlen(name); i++)
     {
-        if (email[i] == '@')
-            break;
-        else
-            username[i] = email[i];
+        if(i%2!=0 && name[i]<32){
+            ascii=name[i] + 32;
+            name[i] = ascii;
+            username[i] = name[i];
+        }else if(i%2!=0 && name[i]>32){
+            ascii=name[i] - 32;
+            name[i] = ascii;
+            username[i] = name[i];
+        }
+        else{
+            username[i] = name[i];
+        }
+
+        }
     }
-}
 void takepassword(char pwd[50])
 {
     int i = 0;
@@ -67,7 +80,7 @@ struct user
     char password[40];
     char username[40];
     char email[40];
-    int phone[10];
+    char phone[40];
 };
 void regis()
 {
@@ -107,6 +120,8 @@ void login()
     FILE *fp;
     int count = 0;
     char uname[40];
+    int opt;
+    char flag,m;
     char pword[40];
     struct user usr;
 
@@ -124,6 +139,26 @@ void login()
             {
                 
                 printf("\nWelcome %s", usr.username);
+
+                do{
+                printf("\n YOU ARE AT FEST MENU!\n");
+                printf("PLEASE CHOOSE WHAT YOU WANT TO DO\n");
+                printf("1.TRANSPORT\n");
+                printf("2.ACCOMODATION\n");
+                printf("3.FUN EVENTS\n");
+                printf("4.MERCHANDISE\n");
+                printf("5.EXIT\n\n");
+                printf("ENTER YOUR RESPONSE:\t");
+                scanf("%d", &opt);
+                if (opt == 1){
+                    m=Transport(flag);
+                    if (m == 'N'||m=='n'){
+                        Transport(flag);
+                    }
+                }
+                }
+                while(flag =='Y'||flag =='y');
+
                 
             }
         }
@@ -144,13 +179,15 @@ void login()
 int main()
 {
     authendesign();
-    
+    // FILE MANAGEMENT
+    FILE *fp;
+    // login& signup
     int opt, count = 0;
 
     printf("\nPlease Choose Your Operation:-");
-    printf("\n1. Signup");
-    printf("\t 2. Login");
-    printf("\t 3. Exit");
+    printf("\n 1. Signup");
+    printf("\n 2. Login");
+    printf("\n 3. Exit");
 
     printf("\n\nEnter Your Choice:-");
     scanf("%d", &opt); // scanf will include"\n"
