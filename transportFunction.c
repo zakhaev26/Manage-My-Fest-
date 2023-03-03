@@ -28,6 +28,7 @@ void transport()
     fgets(stateOfUser, 100, stdin);
 
     stateOfUser[strcspn(stateOfUser, "\n")] = '\0';
+    strcpy(stateOfUser,strlwr(stateOfUser));
     //---> why if using fgets the code fails but when using SCANF, the code works.
 
     //**********************DATABASE********************************
