@@ -42,10 +42,10 @@ mainmenu:
         {
             system("cls");
             checkdateprem:
-            printf("\t\t\t\t\t\tCheck-In Date?(enter day in numbers):");
+            printf("\t\t\t\t\t\tCheck-In Date?(enter day in number):");
             scanf("%d", &cidate);
 
-            printf("\t\t\t\t\t\tCheck-Out Date?:(enter day in numbers):");
+            printf("\t\t\t\t\t\tCheck-Out Date?:(enter day in number):");
             scanf("%d", &codate);
             if (cidate > 10 || cidate < 1 || codate > 10 || codate < 1||codate-cidate<0)
             {
@@ -132,7 +132,7 @@ mainmenu:
             delay(1);
         }
         system("cls");
-        goto mainmenu3;
+        goto mainmenu;
     }
     // logic:
     int costAcc = 0, dayOfStay = 0;
