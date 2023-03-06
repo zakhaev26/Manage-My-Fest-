@@ -6,9 +6,10 @@
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
-char Transport(char flag) {
+char Transport(char flag)
+{
     printf("Are you done with your transport\"Y'\\'N\" :  ");
-    scanf("%c",flag);
+    scanf("%c", flag);
     return flag;
 }
 void takeinput(char ch[40])
@@ -18,34 +19,36 @@ void takeinput(char ch[40])
 }
 void authendesign(void)
 {
-    printf("\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
-    char aut[30] = "AUTHENTICATE\n";
-    printf("%50s", aut);
-    printf("  \t\t\t\tWELCOME TO OUR FEST TERMINAL\n");
+    printf("\n******************************************************************************************************************************\n");
+    printf("\n\t\t\t\t\t\t\tAUTHENTICATE\t\t\t\t\t\n");
+    printf("\t\t\t\t\t   **Welcome to \"FEST MANAGEMENT\" Services !**\n");
+    printf("\t\t\t\t\t  Advaita is being held from 2nd-5th of March\n\n");
 
-    printf("----------------------------------------------------------------------------------------\n");
+    printf("******************************************************************************************************************************\n");
 }
-
 char generateusername(char name[40], char username[40])
 {
     int ascii;
     for (int i = 0; i < strlen(name); i++)
     {
-        if(i%2!=0 && name[i]<32){
-            ascii=name[i] + 32;
-            name[i] = ascii;
-            username[i] = name[i];
-        }else if(i%2!=0 && name[i]>32){
-            ascii=name[i] - 32;
+        if (i % 2 != 0 && name[i] < 32)
+        {
+            ascii = name[i] + 32;
             name[i] = ascii;
             username[i] = name[i];
         }
-        else{
+        else if (i % 2 != 0 && name[i] > 32)
+        {
+            ascii = name[i] - 32;
+            name[i] = ascii;
             username[i] = name[i];
         }
-
+        else
+        {
+            username[i] = name[i];
         }
     }
+}
 void takepassword(char pwd[50])
 {
     int i = 0;
@@ -101,7 +104,7 @@ void regis()
 
     if (!strcmp(user.password, password2))
     {
-        generateusername(user.email, user.username);
+        generateusername(user.name, user.username);
         f = fopen("Users.dat", "a+");
         fwrite(&user, sizeof(struct user), 1, f);
         if (fwrite != 0)
@@ -121,7 +124,7 @@ void login()
     int count = 0;
     char uname[40];
     int opt;
-    char flag,m;
+    char flag, m;
     char pword[40];
     struct user usr;
 
@@ -137,39 +140,30 @@ void login()
         {
             if (!strcmp(usr.password, pword))
             {
-                
-                printf("\nWelcome %s", usr.username);
+                system("cls");
+                authendesign();
+                printf("\n\t\t\t\t\t\tWelcome %s", usr.name);
+                printf("\n\t\t\t\t\t\t|--------------------------------|");
+                printf("\n\t\t\t\t\t\t| ##YOU ARE AT FEST MAINMENU !## |\t\t\t");
+                printf("\n\t\t\t\t\t\t|--------------------------------|\n");
+                printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|");
+                printf("\n\t\t\t\t|1.TRANSPORT|\t\t\t\t");
+                printf("\t    |2.ACCOMODATION|");
+                printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|\t\t\n");
+                printf("\n\t\t\t\t      |------------|\t\t\t        |-------------|\n");
+                printf("\t\t\t\t      |3.FUN EVENTS|\t\t\t\t");
+                printf("|4.MERCHANDISE|");
+                printf("\n\t\t\t\t      |------------|\t\t\t\t|-------------|\n");
 
-                do{
-                printf("\n YOU ARE AT FEST MENU!\n");
-                printf("PLEASE CHOOSE WHAT YOU WANT TO DO\n");
-                printf("1.TRANSPORT\n");
-                printf("2.ACCOMODATION\n");
-                printf("3.FUN EVENTS\n");
-                printf("4.MERCHANDISE\n");
-                printf("5.EXIT\n\n");
-                printf("ENTER YOUR RESPONSE:\t");
-                scanf("%d", &opt);
-                if (opt == 1){
-                    m=Transport(flag);
-                    if (m == 'N'||m=='n'){
-                        Transport(flag);
-                    }
-                }
-                }
-                while(flag =='Y'||flag =='y');
-
-                
+                printf("\t\t\t\t\t\t\tENTER YOUR RESPONSE:\t");
             }
+            else
+            {
+                printf("\n\nInvalid Password!");
+            }
+            count = 1;
         }
-
-        else
-        {
-            printf("\n\nInvalid Password!");
-        }
-        count = 1;
     }
-
     if (!count)
     {
         printf("\n\nUser is not registered!");
