@@ -21,33 +21,37 @@ int main()
     int accomodationChoice, cidate, codate;
     int confirm;
 mainmenu:
-    printf("\t\t\t\t\t   **Welcome to Accomodation Services !**");
-    printf("\n");
+    printf("\t\t\t\t\t   **Welcome to Accomodation Services !\n**");
     printf("\t\t\t\t\tAdvaita is being held from 2nd-5th of March.\n\t\t\t\tHence We are providing lodging for all the non-college students\n\t\t\t\t\t\tfrom 1st-10th of March,2023.\n");
     printf("\n\n\t\t\t\t\t\t    *****Pricing Plan*****\n\n");
     printf("\t\t\t1)PREMIUM PLAN:\t\t\t\t\t\t\t2)NORMAL PLAN:\n");
     printf("\n\t\t\t250 Rs Per Day\t\t\t\t\t\t        100Rs Per day\n");
     printf("\n\t\t\t250 Rs Meal\t\t\t\t\t\t        250Rs Meal\n");
     printf("\t\t\t\t\t\t        Enter 1 or 2:");
+
     scanf("%d", &accomodationChoice);
 
     if (accomodationChoice == 1)
     {
     mainmenu2:
         system("cls");
-        printf("\t\t\t\t\t\t  You chosed Premium Plan.\n\t\t\t\t\tEnter '1' to continue with Check in and Checkout date\n\n\t\t\t\t\t\t\t\tOR\n\n\t\t\t\t\t\t   Press '2' for previous menu.\n");
+        printf("\t\t\t\t\t   **Welcome to Accomodation Services !\n**");
+        printf("\t\t\t\t\tAdvaita is being held from 2nd-5th of March.\n\t\t\t\tHence We are providing lodging for all the non-college students\n\t\t\t\t\t\tfrom 1st-10th of March,2023.\n\n");
+        printf("\t\t\t\t\t\t  You chosed Premium Plan.\n\n\t\t\t\t\tEnter '1' to continue with Check in and Checkout date\n\n\t\t\t\t\t\t\t\tOR\n\n\t\t\t\t\t\t   Press '2' for previous menu.\n");
         scanf("%d", &confirm);
 
         if (confirm == 1)
         {
             system("cls");
-            checkdateprem:
-            printf("\t\t\t\t\t\tCheck-In Date?(enter day in numbers):");
+            printf("\t\t\t\t\t   **Welcome to Accomodation Services !\n**");
+            printf("\t\t\t\t\tAdvaita is being held from 2nd-5th of March.\n\t\t\t\tHence We are providing lodging for all the non-college students\n\t\t\t\t\t\tfrom 1st-10th of March,2023.\n");
+        checkdateprem:
+            printf("\t\t\t\t\t   Check-In Date?(enter day in numbers):");
             scanf("%d", &cidate);
 
             printf("\t\t\t\t\t\tCheck-Out Date?:(enter day in numbers):");
             scanf("%d", &codate);
-            if (cidate > 10 || cidate < 1 || codate > 10 || codate < 1||codate-cidate<0)
+            if (cidate > 10 || cidate < 1 || codate > 10 || codate < 1 || codate - cidate < 0)
             {
 
                 printf("\t\t\t\t\t\t  Please Enter a Valid Data!\n");
@@ -61,8 +65,6 @@ mainmenu:
                 system("cls");
                 goto checkdateprem;
             }
-
-
         }
         else if (confirm == 2)
         {
@@ -100,7 +102,7 @@ mainmenu:
             printf("\t\t\t\t\t\tCheck-Out Date?:(enter day in numbers):");
             scanf("%d", &codate);
 
-            if (cidate > 10 || cidate < 1 || codate > 10 || codate < 1||codate-cidate<0)
+            if (cidate > 10 || cidate < 1 || codate > 10 || codate < 1 || codate - cidate < 0)
             {
 
                 printf("\t\t\t\t\t\t  Please Enter a Valid Data!\n");
