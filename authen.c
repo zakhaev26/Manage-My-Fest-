@@ -31,24 +31,21 @@ char generateusername(char name[40], char username[40])
     int ascii;
     for (int i = 0; i < strlen(name); i++)
     {
-        if (i % 2 != 0 && name[i] < 32)
-        {
-            ascii = name[i] + 32;
+        if(i%2!=0 && name[i]<32){
+            ascii=name[i] + 32;
+            name[i] = ascii;
+            username[i] = name[i];
+        }else if(i%2!=0 && name[i]>32){
+            ascii=name[i] - 32;
             name[i] = ascii;
             username[i] = name[i];
         }
-        else if (i % 2 != 0 && name[i] > 32)
-        {
-            ascii = name[i] - 32;
-            name[i] = ascii;
+        else{
             username[i] = name[i];
         }
-        else
-        {
-            username[i] = name[i];
+
         }
     }
-}
 void takepassword(char pwd[50])
 {
     int i = 0;
