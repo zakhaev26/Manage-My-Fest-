@@ -91,8 +91,6 @@ void transport()
                 (traindistpointer) = &(userdistbytrain);
                 (flightdistpointer) = &(userdistbyflight);
                 (busdistpointer) = &(userdistbybus);
-                //logic to check the distance of state using pointers.
-                //busidstpointer , flightistancepointer , user dist pointer.
             }
         }
 //*********************ASSIGNING VALUES TO SIMPLER VAR**********************
