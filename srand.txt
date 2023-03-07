@@ -1,0 +1,4 @@
+import time.h
+
+        srand(time(0));
+       variable = rand() % 3 + 1;
