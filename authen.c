@@ -2,16 +2,25 @@
 #include <stdlib.h>
 #include <string.h>
 #include <conio.h>
-
+#include <time.h>
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
-char Transport(char flag)
+//************************************NABAJYOTI********************************
+
+void delay(int number_of_seconds)
 {
-    printf("Are you done with your transport\"Y'\\'N\" :  ");
-    scanf("%c", flag);
-    return flag;
+    // Converting time into milli_seconds
+    int milli_seconds = 1000 * number_of_seconds;
+
+    // Storing start time
+    clock_t start_time = clock();
+
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds)
+        ;
 }
+
 void takeinput(char ch[40])
 {
     fgets(ch, 40, stdin);
@@ -31,21 +40,24 @@ char generateusername(char name[40], char username[40])
     int ascii;
     for (int i = 0; i < strlen(name); i++)
     {
-        if(i%2!=0 && name[i]<32){
-            ascii=name[i] + 32;
-            name[i] = ascii;
-            username[i] = name[i];
-        }else if(i%2!=0 && name[i]>32){
-            ascii=name[i] - 32;
+        if (i % 2 != 0 && name[i] < 32)
+        {
+            ascii = name[i] + 32;
             name[i] = ascii;
             username[i] = name[i];
         }
-        else{
+        else if (i % 2 != 0 && name[i] > 32)
+        {
+            ascii = name[i] - 32;
+            name[i] = ascii;
             username[i] = name[i];
         }
-
+        else
+        {
+            username[i] = name[i];
         }
     }
+}
 void takepassword(char pwd[50])
 {
     int i = 0;
@@ -74,19 +86,21 @@ void takepassword(char pwd[50])
         }
     }
 }
-struct user
+typedef struct user
 {
     char name[40];
     char password[40];
     char username[40];
     char email[40];
     char phone[40];
-};
+} users;
 void regis()
 {
     FILE *f;
     char password2[40];
-    struct user user;
+    char re;
+    users user;
+    int opt;
     printf("\nEnter Name:-\t");
     takeinput(user.name);
     printf("Email Address:-\t");
@@ -96,14 +110,14 @@ void regis()
     printf("\nPassword Should be unique\n");
     printf("ENTER Password:-\t");
     takepassword(user.password);
-    printf("\nConfirm Password:-\t");
+    printf("\nCONFIRM Password:-\t");
     takepassword(password2);
 
     if (!strcmp(user.password, password2))
     {
         generateusername(user.name, user.username);
         f = fopen("Users.dat", "a+");
-        fwrite(&user, sizeof(struct user), 1, f);
+        fwrite(&user, sizeof(users), 1, f);
         if (fwrite != 0)
             printf("\n\nUser resgistration success, Your username is %s", user.username);
         else
@@ -113,6 +127,17 @@ void regis()
     else
     {
         printf("\n\n\"YOUR PASSWORD NOT MATCHED\"\n");
+        printf("\t\t\t\t\t\t  Please Re-enter!\n");
+        printf("\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
+        int i;
+        for (i = 0; i < 5; i++)
+        {
+            // delay of one second
+            delay(1);
+        }
+        system("cls");
+        authendesign();
+        regis();
     }
 }
 void login()
@@ -121,9 +146,9 @@ void login()
     int count = 0;
     char uname[40];
     int opt;
-    char flag, m;
+
     char pword[40];
-    struct user usr;
+    users usr;
 
     printf("\nEnter your username:\t");
     takeinput(uname);
@@ -131,7 +156,7 @@ void login()
     takepassword(pword);
 
     fp = fopen("Users.dat", "r");
-    while (fread(&usr, sizeof(struct user), 1, fp))
+    while (fread(&usr, sizeof(users), 1, fp))
     {
         if (!strcmp(usr.username, uname))
         {
@@ -172,7 +197,7 @@ int main()
     authendesign();
     // FILE MANAGEMENT
     FILE *fp;
-    // login& signup
+    
     int opt, count = 0;
 
     printf("\nPlease Choose Your Operation:-");
@@ -192,6 +217,11 @@ int main()
     {
         login();
         exit(0);
+    }
+    else
+    {
+        printf("\t\t\t\t\t\t\t\"SEE YOU SOON IN ADVAITA\":)");
+        return 0;
     }
 
     return 0;
