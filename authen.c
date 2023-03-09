@@ -6,7 +6,6 @@
 #define ENTER 13
 #define TAB 9
 #define BCKSPC 8
-//************************************NABAJYOTI********************************
 
 void delay(int number_of_seconds)
 {
@@ -35,28 +34,20 @@ void authendesign(void)
 
     printf("******************************************************************************************************************************\n");
 }
-char generateusername(char name[40], char username[40])
+char generateusername(char phone[40], char username[40],char email[40])
 {
-    int ascii;
-    for (int i = 0; i < strlen(name); i++)
-    {
-        if (i % 2 != 0 && name[i] < 32)
-        {
-            ascii = name[i] + 32;
-            name[i] = ascii;
-            username[i] = name[i];
-        }
-        else if (i % 2 != 0 && name[i] > 32)
-        {
-            ascii = name[i] - 32;
-            name[i] = ascii;
-            username[i] = name[i];
-        }
-        else
-        {
-            username[i] = name[i];
-        }
+    
+    int i;
+    char temp[40];
+    for(i=0;email[i]!='@';i++){
+        username[i]=email[i];
     }
+    for(int j=0;j<2;j++){
+         temp[j]=phone[j];
+    }
+    strcat(username,temp);
+    
+    
 }
 void takepassword(char pwd[50])
 {
@@ -115,7 +106,7 @@ void regis()
 
     if (!strcmp(user.password, password2))
     {
-        generateusername(user.name, user.username);
+        generateusername(user.phone, user.username,user.email);
         f = fopen("Users.dat", "a+");
         fwrite(&user, sizeof(users), 1, f);
         if (fwrite != 0)
@@ -197,7 +188,7 @@ int main()
     authendesign();
     // FILE MANAGEMENT
     FILE *fp;
-    
+    // login& signup
     int opt, count = 0;
 
     printf("\nPlease Choose Your Operation:-");
