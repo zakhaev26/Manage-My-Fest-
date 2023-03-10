@@ -352,22 +352,20 @@ main:
 
     //************************USER STATE EXTRACTION****************************
     char stateOfUser[20];
-    printf("\t\t\t\t\t     In which state do you live?:");
+    printf("\t\t\t     In which state do you live?(PLEASE USE UNDERSCORE FOR SPACES BETWEEN NAME,IF NECESSARY!):");
     scanf("%s",stateOfUser);
     strcpy(stateOfUser, strlwr(stateOfUser));
-    
-
     strcpy(stateOfUser, strlwr(stateOfUser));
 
     //**********************DATABASE********************************
 
     gd pb = {"punjab", 2100, 1607.01, 2031.47};
-    gd wb = {"west bengal", 400, 470.69, 556.68};
+    gd wb = {"west_bengal", 400, 470.69, 556.68};
     gd assam = {"assam", 1000, 970.43, 1353.00};
     gd goa = {"goa", 1693.20, 1364.58, 1640.79};
-    gd mp = {"madhya pradesh", 1000, 837.31, 1119.64};
-    gd andhrap = {"andhra pradesh", 750, 810.57, 929.48};
-    gd arunachalp = {"arunachal pradesh", 2600, 1216.48, 1811.39};
+    gd mp = {"madhya_pradesh", 1000, 837.31, 1119.64};
+    gd andhrap = {"andhra_pradesh", 750, 810.57, 929.48};
+    gd arunachalp = {"arunachal_pradesh", 2600, 1216.48, 1811.39};
     gd bihar = {"bihar", 700, 548.18, 705.19};
     gd chattisgarh = {"chattisgarh", 500, 446.07, 553.61};
     gd delhi = {"delhi", 1800, 1273.43, 1635.87};
@@ -385,9 +383,9 @@ main:
     gd tamilnadu = {"tamilnadu", 1700, 1306.26, 1580.21};
     gd telangana = {"telangana", 1000, 759.46, 1001.71};
     gd tripura = {"tripura", 2200, 758.22, 1005.45};
-    gd up = {"uttar pradesh", 1100, 932.26, 1206.90};
+    gd up = {"uttar_pradesh", 1100, 932.26, 1206.90};
     gd uk = {"uttarakhand", 1100, 1291.25, 1729.47};
-    gd hp = {"himachal pradesh", 1596, 1551.33, 2134.09};
+    gd hp = {"himachal_pradesh", 1596, 1551.33, 2134.09};
     // more states to be added.
 
     //*************************GEOGRAPHICAL_DIST ARRAY INIT*******************
@@ -430,17 +428,16 @@ main:
     }
     if (statewrongdetector == 28)
     {
-        printf("%s",stateOfUser);
+        // printf("%s",stateOfUser);
         printf("\n\n\t\t\t\t\t\t  Please Enter a Valid Data!\n");
         printf("\n\n\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
         int i;
         for (i = 0; i < 5; i++)
         {
             // delay of 5 second
-            delay(5);
+            delay(1);
         }
         system("cls");
-
         goto main;
     }
 
