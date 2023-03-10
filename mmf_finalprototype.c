@@ -297,14 +297,6 @@ void takepassword(char pwd[50])
             pwd[i] = '\0';
             break;
         }
-        else if (ch == 8)
-        {
-            if (i > 0)
-            {
-                i--;
-                printf("\b \b");
-            }
-        }
         else
         {
             pwd[i] = ch;
