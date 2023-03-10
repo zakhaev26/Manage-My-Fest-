@@ -11,8 +11,9 @@ int Funevent(int a){
     int price;
     int age;
     char conformation;
-    
-    printf("Hello!\nWelcome to the funzone where you would experience exotic events.\nPlease fill up the followings.\n");
+    printf("\n******************************************************************************************************************************\n");
+    printf("\t\t\t\t\t\t\tHello!\n\t\t\t***Welcome to the funzone where you would experience exotic events.***\n");
+    printf("\n******************************************************************************************************************************\n");
     printf("Please enter your age: ");
     scanf("%d", &age);
     
@@ -20,7 +21,7 @@ int Funevent(int a){
         
         printf("Age requirment is 18+ to participate in any event\n");
         printf("Thank you :)\n");
-        printf("See you next year.👋🏻\n");
+        printf("See you next year.\n");
         
     }
     else{
