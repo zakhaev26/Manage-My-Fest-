@@ -278,11 +278,9 @@ void takeinput(char ch[40])
     ch[strlen(ch) - 1] = 0;
 }
 
-char username(char username[40], char email[40])
+char generateusername(char email[40], char username[40])
 {
-
-    int i;
-    for (i = 0; email[i] != '@'; i++)
+    for (int i = 0; i < strlen(email); i++)
     {
         username[i] = email[i];
     }
@@ -299,14 +297,14 @@ void takepassword(char pwd[50])
             pwd[i] = '\0';
             break;
         }
-        // else if (ch == 8)
-        // {
-        //     if (i > 0)
-        //     {
-        //         i--;
-        //         printf("\b \b");
-        //     }
-        // }
+        else if (ch == 8)
+        {
+            if (i > 0)
+            {
+                i--;
+                printf("\b \b");
+            }
+        }
         else
         {
             pwd[i] = ch;
@@ -327,7 +325,6 @@ void regis()
 {
     FILE *f;
     char password2[40];
-    char re;
     users user;
     int opt;
     printf("\nEnter Name:-\t");
@@ -344,12 +341,13 @@ void regis()
 
     if (!strcmp(user.password, password2))
     {
-        username(user.username, user.email);
-        f = fopen("Users.txt", "a+");
+        generateusername(user.email,user.username);
+        f = fopen("Users.txt", "w+");
         fwrite(&user, sizeof(users), 1, f);
         if (fwrite != 0)
         {
             printf("\n\nUser resgistration success, Your username is %s", user.username);
+            fclose(f);
             printf("\n\t\t\t\t\t     Redirecting to Authenticate Page in 5 Secs... ");
             int i;
             for (i = 0; i < 5; i++)
@@ -358,11 +356,13 @@ void regis()
                 delay(1);
             }
             system("cls");
+            
             op();
         }
+
         else
             printf("\n\nSorry! Something went wrong :(");
-        fclose(f);
+        
     }
 
     else
@@ -381,6 +381,8 @@ void regis()
         regis();
     }
 }
+
+//*******************************************************LOGIN******************************************************
 void login()
 {
     FILE *fp;
@@ -395,49 +397,28 @@ void login()
     takeinput(uname);
     printf("Enter your password:\t");
     takepassword(pword);
-
-    fp = fopen("Users.txt", "r");
-    if (fp == NULL)
+    fp = fopen("Users.txt","r");
+    while (fread(&usr, sizeof(users), 1, fp))
     {
-        fprintf(stderr, "Error to open the file");
-        exit(1);
-
-        while (fread(&usr, sizeof(users), 1, fp))
+        if (!strcmp(usr.username, uname))
         {
-            if (!strcmp(usr.username, uname))
+            if (!strcmp(usr.password, pword))
             {
-                if (!strcmp(usr.password, pword))
-                {
-                    system("cls");
-                    authendesign();
-                    printf("\n\t\t\t\t\t\tWelcome %s", usr.name);
-                    printf("\n\t\t\t\t\t\t|--------------------------------|");
-                    printf("\n\t\t\t\t\t\t| ##YOU ARE AT FEST MAINMENU !## |\t\t\t");
-                    printf("\n\t\t\t\t\t\t|--------------------------------|\n");
-                    printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|");
-                    printf("\n\t\t\t\t|1.TRANSPORT|\t\t\t\t");
-                    printf("\t    |2.ACCOMODATION|");
-                    printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|\t\t\n");
-                    printf("\n\t\t\t\t      |------------|\t\t\t        |-------------|\n");
-                    printf("\t\t\t\t      |3.FUN EVENTS|\t\t\t\t");
-                    printf("|4.MERCHANDISE|");
-                    printf("\n\t\t\t\t      |------------|\t\t\t\t|-------------|\n");
-
-                    printf("\t\t\t\t\t\t\tENTER YOUR RESPONSE:\t");
-                }
-                else
-                {
-                    printf("\n\nInvalid Password!");
-                }
-                count = 1;
+                system("cls");
+                festmenu();
             }
+            else
+            {
+                printf("\n\nInvalid Password!");
+            }
+            count = 1;
         }
-        if (!count)
-        {
-            printf("\n\nUser is not registered!");
-        }
-        fclose(fp);
     }
+    if (!count)
+    {
+        printf("\n\nUser is not registered!");
+    }
+    fclose(fp);
 }
 
 void op()
@@ -457,12 +438,11 @@ void op()
     if (opt == 1)
     {
         regis();
-        exit(0);
+        
     }
     else if (opt == 2)
     {
         login();
-        exit(0);
     }
     else
     {
@@ -471,7 +451,7 @@ void op()
 }
 int main()
 {
-
+    
     op();
 
     return 0;
