@@ -256,21 +256,6 @@ scanf("%d", &min);
 printf("\n\t\t\t\t\t\t\t   Day:\n");
 scanf("%d", &day);
 
-if((hour<=12&&hour>=0)){
-    printf("timings ok~");
-}
-else if((min<=60&&min>=0)){
-    printf("timings ok~");
-}
-else if((day>=1&&day<=5)){
-    printf("timings ok~");
-}
-
-else{
-goto timing;
-}
-
-
 // age,name,gender from FILE IO.
 // train,bus,flight
 if (userchoice == 1)
