@@ -1,4 +1,4 @@
-# Manage*My*Fest*
+Manage My Fest
 Semester * 1 Project for CS lab.
 
 Members:
@@ -6,3 +6,5 @@ Members:
 * Narayan Samal 
 * Nabajyoti Kumar Naik
 * Soubhik Kumar Gon
+
+If you find any valuable suggestions/errors,Please raise create an issue and notify us!
