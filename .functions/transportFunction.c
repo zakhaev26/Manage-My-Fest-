@@ -39,8 +39,7 @@ main:
     //************************USER STATE EXTRACTION****************************
     char stateOfUser[20];
     printf("\t\t\t\t\t     In which state do you live?:");
-    fgets(stateOfUser, 100, stdin);
-    stateOfUser[strcspn(stateOfUser, "\n")] = '\0';
+    scanf("%[^\n]s",stateOfUser);
     strcpy(stateOfUser, strlwr(stateOfUser));
 
     //**********************DATABASE********************************

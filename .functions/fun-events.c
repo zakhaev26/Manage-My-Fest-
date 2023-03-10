@@ -19,7 +19,7 @@ int Funevent(int a){
     if(age < 18){
         
         printf("Age requirment is 18+ to participate in any event\n");
-        printf("Thank you 😊\n");
+        printf("Thank you :)\n");
         printf("See you next year.👋🏻\n");
         
     }
