@@ -354,7 +354,6 @@ main:
     char stateOfUser[20];
     printf("\t\t\t\t\t     In which state do you live?:");
     gets(stateOfUser);
-    fgetc(stdin);
     printf("%s",stateOfUser);
     
 
