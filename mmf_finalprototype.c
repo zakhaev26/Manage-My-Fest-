@@ -258,8 +258,6 @@ void festmenu(void)
             delay(1);
         }
         op();
-        
-
     }
     else
     {
@@ -280,20 +278,14 @@ void takeinput(char ch[40])
     ch[strlen(ch) - 1] = 0;
 }
 
-char generateusername(char phone[40], char username[40], char email[40])
+char username(char username[40], char email[40])
 {
 
     int i;
-    char temp[40];
     for (i = 0; email[i] != '@'; i++)
     {
         username[i] = email[i];
     }
-    for (int j = 0; j < 2; j++)
-    {
-        temp[j] = phone[j];
-    }
-    strcat(username, temp);
 }
 void takepassword(char pwd[50])
 {
@@ -307,14 +299,14 @@ void takepassword(char pwd[50])
             pwd[i] = '\0';
             break;
         }
-        else if (ch == 8)
-        {
-            if (i > 0)
-            {
-                i--;
-                printf("\b \b");
-            }
-        }
+        // else if (ch == 8)
+        // {
+        //     if (i > 0)
+        //     {
+        //         i--;
+        //         printf("\b \b");
+        //     }
+        // }
         else
         {
             pwd[i] = ch;
@@ -352,13 +344,22 @@ void regis()
 
     if (!strcmp(user.password, password2))
     {
-        generateusername(user.phone, user.username, user.email);
-        f = fopen("Users.dat", "a+");
+        username(user.username, user.email);
+        f = fopen("Users.txt", "a+");
         fwrite(&user, sizeof(users), 1, f);
-        if (fwrite != 0){
+        if (fwrite != 0)
+        {
             printf("\n\nUser resgistration success, Your username is %s", user.username);
-            login();
+            printf("\n\t\t\t\t\t     Redirecting to Authenticate Page in 5 Secs... ");
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                // delay of one second
+                delay(1);
             }
+            system("cls");
+            op();
+        }
         else
             printf("\n\nSorry! Something went wrong :(");
         fclose(f);
@@ -395,47 +396,53 @@ void login()
     printf("Enter your password:\t");
     takepassword(pword);
 
-    fp = fopen("Users.dat", "r");
-    while (fread(&usr, sizeof(users), 1, fp))
+    fp = fopen("Users.txt", "r");
+    if (fp == NULL)
     {
-        if (!strcmp(usr.username, uname))
-        {
-            if (!strcmp(usr.password, pword))
-            {
-                system("cls");
-                authendesign();
-                printf("\n\t\t\t\t\t\tWelcome %s", usr.name);
-                printf("\n\t\t\t\t\t\t|--------------------------------|");
-                printf("\n\t\t\t\t\t\t| ##YOU ARE AT FEST MAINMENU !## |\t\t\t");
-                printf("\n\t\t\t\t\t\t|--------------------------------|\n");
-                printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|");
-                printf("\n\t\t\t\t|1.TRANSPORT|\t\t\t\t");
-                printf("\t    |2.ACCOMODATION|");
-                printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|\t\t\n");
-                printf("\n\t\t\t\t      |------------|\t\t\t        |-------------|\n");
-                printf("\t\t\t\t      |3.FUN EVENTS|\t\t\t\t");
-                printf("|4.MERCHANDISE|");
-                printf("\n\t\t\t\t      |------------|\t\t\t\t|-------------|\n");
+        fprintf(stderr, "Error to open the file");
+        exit(1);
 
-                printf("\t\t\t\t\t\t\tENTER YOUR RESPONSE:\t");
-            }
-            else
+        while (fread(&usr, sizeof(users), 1, fp))
+        {
+            if (!strcmp(usr.username, uname))
             {
-                printf("\n\nInvalid Password!");
+                if (!strcmp(usr.password, pword))
+                {
+                    system("cls");
+                    authendesign();
+                    printf("\n\t\t\t\t\t\tWelcome %s", usr.name);
+                    printf("\n\t\t\t\t\t\t|--------------------------------|");
+                    printf("\n\t\t\t\t\t\t| ##YOU ARE AT FEST MAINMENU !## |\t\t\t");
+                    printf("\n\t\t\t\t\t\t|--------------------------------|\n");
+                    printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|");
+                    printf("\n\t\t\t\t|1.TRANSPORT|\t\t\t\t");
+                    printf("\t    |2.ACCOMODATION|");
+                    printf("\n\t\t\t\t|-----------|\t\t\t\t\t    |--------------|\t\t\n");
+                    printf("\n\t\t\t\t      |------------|\t\t\t        |-------------|\n");
+                    printf("\t\t\t\t      |3.FUN EVENTS|\t\t\t\t");
+                    printf("|4.MERCHANDISE|");
+                    printf("\n\t\t\t\t      |------------|\t\t\t\t|-------------|\n");
+
+                    printf("\t\t\t\t\t\t\tENTER YOUR RESPONSE:\t");
+                }
+                else
+                {
+                    printf("\n\nInvalid Password!");
+                }
+                count = 1;
             }
-            count = 1;
         }
+        if (!count)
+        {
+            printf("\n\nUser is not registered!");
+        }
+        fclose(fp);
     }
-    if (!count)
-    {
-        printf("\n\nUser is not registered!");
-    }
-    fclose(fp);
 }
 
 void op()
 {
-    
+
     authendesign();
     int opt;
 
@@ -460,7 +467,6 @@ void op()
     else
     {
         printf("\t\t\t\t\t\t\t\"SEE YOU SOON IN ADVAITA\":)");
-        
     }
 }
 int main()
