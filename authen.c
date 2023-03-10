@@ -7,6 +7,7 @@
 #define TAB 9
 #define BCKSPC 8
 
+
 void delay(int number_of_seconds)
 {
     // Converting time into milli_seconds
@@ -189,7 +190,7 @@ int main()
     // FILE MANAGEMENT
     FILE *fp;
     // login& signup
-    int opt, count = 0;
+    int opt;
 
     printf("\nPlease Choose Your Operation:-");
     printf("\n 1. Signup");
