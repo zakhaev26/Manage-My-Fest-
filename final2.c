@@ -7,6 +7,7 @@
 
 void login();
 void op();
+//******************************************************DESIGN BY NABAJYOTI**************************************************
 void authendesign(void)
 {
     printf("\n******************************************************************************************************************************\n");
@@ -16,7 +17,7 @@ void authendesign(void)
 
     printf("******************************************************************************************************************************\n");
 }
-//************************************************TIME DELAY PART************************************************
+//************************************************TIME DELAY PART BY SOUBHIK************************************************
 void delay(int number_of_seconds)
 {
     // Converting time into milli_seconds
@@ -38,7 +39,7 @@ typedef struct geographical_DISTANCE
     float distanceByBus;
 } gd;
 
-//************************************************ACCOMODATION*************************************************************
+//************************************************ACCOMODATION BY SOUBHIK & ABHIJEET*************************************************************
 
 void Accom(void)
 {
@@ -182,6 +183,10 @@ mainmenu:
     if (accomodationChoice == 1)
     {
         system("cls");
+        printf("\n******************************************************************************************************************************\n");
+        printf("\n\n\t\t\t\t\t   **Welcome to Accomodation Services !**\n");
+        printf("\t\t\t\t\tAdvaita is being held from 2nd-5th of March.\n\t\t\t\tHence We are providing lodging for all the non-college students\n\t\t\t\t\t\tfrom 1st-10th of March,2023.\n");
+        printf("\n******************************************************************************************************************************\n");
         costAcc = costAcc + dayOfStay * 500;
         printf("\n\n\t\t\t\t\tYour Total cost of Stay including Food Expense = %d\n", costAcc);
         printf("\t\t\t\tYou will be sent a Code with email to your registered E-mail Id .\n\t\t\t\tPlease Bring your Aadhar/Pan Card for Smooth Allocation of your room.");
@@ -190,6 +195,10 @@ mainmenu:
     else if (accomodationChoice == 2)
     {
         system("cls");
+        printf("\n******************************************************************************************************************************\n");
+        printf("\n\n\t\t\t\t\t   **Welcome to Accomodation Services !**\n");
+        printf("\t\t\t\t\tAdvaita is being held from 2nd-5th of March.\n\t\t\t\tHence We are providing lodging for all the non-college students\n\t\t\t\t\t\tfrom 1st-10th of March,2023.\n");
+        printf("\n******************************************************************************************************************************\n");
         costAcc = costAcc + dayOfStay * 350;
         printf("Your Total cost of Stay including Food Expense = %d", costAcc);
         printf("You will be sent a Code with email to your registered E-mail Id .\nPay on the UPI Id for confirming the transaction and reply to email with a screenshot of Paymeny.\nPlease Bring your Aadhar/Pan Card for Smooth Allocation of your room.");
@@ -198,6 +207,7 @@ mainmenu:
     printf("\n\n\t\t\t\t\t    Thanks for using the Accomodation Service!\n");
     printf("\n\n\t\t\t\t    For any Queries,Contact our helpdesk at +91 6370462354.\n\n\n\n\n\n\n\n\n\n\n");
 }
+//***********************************************MERCHANDISE BY NARAYAN ************************************************
 int Merchandise()
 {
     typedef struct
@@ -340,21 +350,25 @@ int Merchandise()
 
     return 0;
 }
+//****************************************TRANSPORT BY SOUBHIK*************************************************************
 //*************FUNCTION CALL**********************************
+
 void transport()
 {
 
     //*****************************GREETING MESSAGE*******************
 
 main:
+    system("cls");
+    printf("\n******************************************************************************************************************************\n");
     printf("\t\t\t\t\t     Welcome to transport facility!\n");
+    printf("\n******************************************************************************************************************************\n");
     printf("\n");
 
     //************************USER STATE EXTRACTION****************************
     char stateOfUser[20];
-    printf("\t\t\t     In which state do you live?(PLEASE USE UNDERSCORE FOR SPACES BETWEEN NAME,IF NECESSARY!):");
+    printf("\t\t\t   In which state do you live?(PLEASE USE UNDERSCORE FOR SPACES BETWEEN NAME,IF NECESSARY!):");
     scanf("%s", stateOfUser);
-    strcpy(stateOfUser, strlwr(stateOfUser));
     strcpy(stateOfUser, strlwr(stateOfUser));
 
     //**********************DATABASE********************************
@@ -580,7 +594,7 @@ timing:
         printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tTRAIN\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
         printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n", hour, min);
         printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-        printf("|\t\t\t\tPASSENGER NAME:FILE IO\t\t    Class:Economy\t\t\t\t\t\t\t|");
+        printf("|\t\t\t\tPASSENGER NAME:SARTHAK PADHI\t\t    Class:Economy\t\t\t\t\t\t\t|");
         printf("\n");
         printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
         printf("|\t\t\t\tFrom:%s\t\t    To:Bhubaneswar/BBS\t\t\t\t\t\t\t|", stateOfUser);
@@ -598,7 +612,7 @@ timing:
         printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tBus\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
         printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n", hour, min);
         printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
-        printf("|\t\t\t\tPASSENGER NAME:FILE IO\t\t    Class:Economy\t\t\t\t\t\t\t|");
+        printf("|\t\t\t\tPASSENGER NAME:SARTHAK PADHI\t\t    Class:Economy\t\t\t\t\t\t\t|");
         printf("\n");
         printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
         printf("|\t\t\t\tFrom:%s\t\t    To:Bhubaneswar/BBS\t\t\t\t\t\t\t|", stateOfUser);
@@ -609,7 +623,7 @@ timing:
     }
     else if (userchoice == 3)
     {
-        printf("%c*******************************************************************************************************************************%c", 201, 187);
+        printf("%c*****************************************************************************************************************************%c", 201, 187);
         printf("\n");
         printf("|\t\t\t\t\t\tBOARDING PASS\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n|\t\t\t\tFlight\t\tBoarding-Time\tGate\tSeat\t\t\t\t\t\t\t        |\n");
         printf("|\t\t\t\tABC1285\t\t%d:%d\t\t15\t11A                     \t\t\t\t\t|\n", hour, min);
@@ -621,10 +635,11 @@ timing:
         printf("\n");
         printf("|\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t|\n");
         printf("|\t\t\t\tDATE:%d-March-2023\t\t\t\t\t\t\t\t\t\t\t|\n", day);
-        printf("%c*******************************************************************************************************************************%c", 192, 188);
+        printf("%c*****************************************************************************************************************************%c", 192, 188);
     }
 }
 
+//********************************************FUN EVENT BY NARAYAN*****************************************************
 int Funevent(int a)
 {
     int event;
@@ -641,7 +656,7 @@ int Funevent(int a)
 
         printf("Age requirment is 18+ to participate in any event\n");
         printf("Thank you :)\n");
-        printf("See you next year.👋🏻\n");
+        printf("See you next year.\n");
     }
     else
     {
@@ -737,7 +752,7 @@ int Funevent(int a)
     return 0;
 }
 
-//*****************************************************FEST MENU********************************************************
+//*****************************************************FEST MENUBY NABAJYOTI********************************************************
 void festmenu(void)
 {
     system("cls");
@@ -779,6 +794,19 @@ void festmenu(void)
         {
             festmenu();
         }
+        else
+        {
+            printf("\t\t\t\t\t!KINDlY ENTER THE CORRECT OPTION!");
+            printf("\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                // delay of one second
+                delay(1);
+            }
+            system("cls");
+            festmenu();
+        }
     }
     else if (opt == 3)
     {
@@ -787,6 +815,19 @@ void festmenu(void)
         scanf("%d", &opt);
         if (opt == 7)
         {
+            festmenu();
+        }
+        else
+        {
+            printf("\t\t\t\t\t!KINDlY ENTER THE CORRECT OPTION!");
+            printf("\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                // delay of one second
+                delay(1);
+            }
+            system("cls");
             festmenu();
         }
     }
@@ -799,10 +840,23 @@ void festmenu(void)
         {
             festmenu();
         }
+        else
+        {
+            printf("\t\t\t\t\t  !KINDlY ENTER THE CORRECT OPTION!\n");
+            printf("\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
+            int i;
+            for (i = 0; i < 5; i++)
+            {
+                // delay of one second
+                delay(1);
+            }
+            system("cls");
+            festmenu();
+        }
     }
     else if (opt == 5)
     {
-        printf("\t\t\t\t\t  You will be Redirecting to AUTHENTICATE MENUE for \"EXIT\" in 5 Secs... ");
+        printf("\t\t\t\t\t  You will be Redirecting to AUTHENTICATE MENU for \"EXIT\" in 5 Secs... ");
         int i;
         for (i = 0; i < 5; i++)
         {
@@ -824,13 +878,13 @@ void festmenu(void)
         festmenu();
     }
 }
-//********************************************************INPUT*******************************************************
+//********************************************************INPUT BY NABAJYOTI*******************************************************
 void takeinput(char ch[40])
 {
     fgets(ch, 40, stdin);
     ch[strlen(ch) - 1] = 0;
 }
-
+//**************************************************USERNAME BY NABAJYOTI**************************************
 char generateusername(char email[40], char username[40])
 {
     for (int i = 0; i < strlen(email); i++)
@@ -850,6 +904,14 @@ void takepassword(char pwd[50])
             pwd[i] = '\0';
             break;
         }
+        else if (ch == 8)
+        {
+            if (i > 0)
+            {
+                i--;
+                printf("\b \b");//IT WILL backthe cursor
+            }
+        }
         else
         {
             pwd[i] = ch;
@@ -858,6 +920,7 @@ void takepassword(char pwd[50])
         }
     }
 }
+//**********************************************************REGISTRATION BY NABAJYOTI******************************************************************
 typedef struct user
 {
     char name[40];
@@ -911,7 +974,7 @@ void regis()
 
     else
     {
-        printf("\n\n\"YOUR PASSWORD NOT MATCHED\"\n");
+        printf("\n\n\t\t\t\t\t\t\"YOUR PASSWORD NOT MATCHED\"\n");
         printf("\t\t\t\t\t\t  Please Re-enter!\n");
         printf("\t\t\t\t\t     Redirecting to Previous Page in 5 Secs... ");
         int i;
@@ -926,7 +989,7 @@ void regis()
     }
 }
 
-//*******************************************************LOGIN******************************************************
+//*******************************************************LOGIN BY NABJYOTI******************************************************
 void login()
 {
     FILE *fp;
@@ -988,11 +1051,25 @@ void op()
     {
         login();
     }
-    else
+    else if (opt == 3)
     {
         printf("\t\t\t\t\t\t\t\"SEE YOU SOON IN ADVAITA\":)");
     }
+    else
+    {
+        printf("\t\t\t\t\t\t  Please ENTER VALID OPTION !\n");
+        printf("\t\t\t\t\t     Redirecting to AUTHENTIC MENU in 5 Secs... ");
+        int i;
+        for (i = 0; i < 5; i++)
+        {
+            // delay of one second
+            delay(1);
+        }
+        system("cls");
+        op();
+    }
 }
+//***********************************************************MAIN FUNCTION BY NABAJYOTI***************************************************************
 int main()
 
 {

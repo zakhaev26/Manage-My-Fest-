@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "Transport.C": "cpp",
-        "conio.h": "c"
+        "conio.h": "c",
+        "time.h": "c",
+        "stdio.h": "c"
     }
 }
