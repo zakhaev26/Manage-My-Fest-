@@ -338,7 +338,7 @@ int Merchandise()
     printf("\n\n\n");
 
     printf("Thank you!\n");
-    printf("IIIT will be waiting for your presence in the fest.😊\n");
+    printf("IIIT will be waiting for your presence in the fest.\n");
 
     printf("\n\n\n");
 
@@ -731,7 +731,7 @@ int Funevent(int a)
             printf("\n\n");
 
             printf("Thank you!\n");
-            printf("IIIT will be waiting for your presence in the fest.😊\n");
+            printf("IIIT will be waiting for your presence in the fest.\n");
 
             printf("\n\n");
 
