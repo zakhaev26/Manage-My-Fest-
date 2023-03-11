@@ -203,6 +203,9 @@ int Merchandise()
     printf("\n******************************************************************************************************************************\n");
     printf("\t\t\t\t\t\t\t\t\t\t**Welcom to Merchandisen Section\n");
     printf("\n******************************************************************************************************************************\n");
+    
+    // created a structure to store all user data.
+    
     typedef struct
     {
         int merchno;
@@ -212,6 +215,8 @@ int Merchandise()
     } Merchandise;
 
     Merchandise item;
+    
+    // created a bunch of temporary variables that I would need to store the user data until the order is confirmed.
 
     char conformation;
     int merchno;
@@ -248,6 +253,7 @@ int Merchandise()
     //      Merch info
 
     printf("\nMerchandise Information:\n");
+    // Name info
     printf("Name :");
     switch (merchno)
     {
@@ -269,6 +275,7 @@ int Merchandise()
     default:
         break;
     }
+    // size info
     printf("Size :");
     switch (Size)
     {
@@ -293,8 +300,9 @@ int Merchandise()
     default:
         break;
     }
+    // Quantity info
     printf("Quantity: %d\n", quantity);
-
+    // Price info
     switch (merchno)
     {
     case 1:
@@ -322,14 +330,14 @@ int Merchandise()
     printf("Do you want to conform this order ?(y/n)");
     scanf("%s", &conformation);
 
-    if (conformation == 'y')
+    if (conformation == 'y')// to add all the user input stored in the pre defined variable to structure.
     {
         item.merchno = merchno;
         item.Size = Size;
         item.quantity = quantity;
         item.price = price;
     }
-
+    // UI purpose
     printf("\n\n\n");
 
     printf("Thank you!\n");
@@ -630,17 +638,21 @@ timing:
 
 int Funevent(int a)
 {
+    // created variables which is to be used to store user data.
     int event;
     int price;
     int age;
     char conformation;
+    // for UI purpose
     printf("\n******************************************************************************************************************************\n");
     printf("\t\t\t\t\t\t\t\t\t\t**Hello!\n\t\t\t\t\t\t**Welcome to the funzone where you would experience exotic events.");
     printf("\n******************************************************************************************************************************\n");
     printf("Please fill up the followings.\n");
     printf("Please enter your age: ");
-    scanf("%d", &age);
-
+    scanf("%d", &age);//getting user input.
+    
+    //checking for age requirements
+    
     if(age < 18){
         
         printf("Age requirment is 18+ to participate in any event\n");
@@ -649,7 +661,7 @@ int Funevent(int a)
         
     }
     else{
-        
+        // list of events with price.
         printf("Event Name List\n");
         printf("1. Switch Code (INR 500)\n");
         printf("2. String Delicacy (INR 400)\n");
@@ -707,11 +719,11 @@ int Funevent(int a)
         printf("Price : %d\n", price);
 
         printf("Do you want to conform this ?(y/n)");
-        scanf("%s", &conformation);
+        scanf("%s", &conformation);//confirming
 
         if (conformation == 'y')
         {
-            //          take the data of event number and price
+            // for UI purpose
 
             printf("\n\n");
 
@@ -725,6 +737,7 @@ int Funevent(int a)
         }
         else
         {
+            // for UI purpose
             printf("\n\n");
 
             printf("Thank you!\n");
