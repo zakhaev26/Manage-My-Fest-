@@ -1,10 +1,3 @@
-//
-//  rough.c
-//  iprog project
-//
-//  Created by Narayan Samal on 06/03/23.
-//
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
