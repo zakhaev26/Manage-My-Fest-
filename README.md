@@ -7,4 +7,4 @@ Members:
 * Nabajyoti Kumar Naik
 * Soubhik Kumar Gon
 
-If you find any valuable suggestions/errors,Please raise create an issue and notify us!
+If you find any valuable suggestions/errors,Please raise create issue and notify us!
